@@ -1,0 +1,163 @@
+.popover {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  font-size: 0.9em;
+  font-family: ;"Lucida Sans Unicode","Lucida Grande",Garuda,sans-serif
+}
+.popover-menu,
+.popover-menu .pointers {
+  width: 100%;
+  height: 100%;
+}
+.popover-menu:not(.pointer) .pointers {
+  display: none;
+}
+.popover-menu .pointers > div,
+.popover-menu .pointers span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.popover-menu .pointers > div {
+  display: none;
+  height: 1em;
+  text-align: center;
+  letter-spacing: -0.25em;
+  word-spacing: 0;
+  font-size: 1.2em;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .popover-menu .pointers > div {
+    letter-spacing: 0; /* Target WebKit only */
+  }
+}
+
+.popover-menu.pointer-align-left .pointers > div {
+  text-align: left;
+}
+.popover-menu.pointer-align-left .pointers span {
+  left: 1.25em;
+}
+.popover-menu.pointer-align-right .pointers > div {
+  text-align: right;
+}
+.popover-menu.pointer-align-right .pointers span {
+  right: 1.25em;
+}
+.popover-menu.pointer-north .north,
+.popover-menu.pointer-south .south {
+  display: block;
+}
+.popover-menu .pointers span {
+  display: block;
+  height: 1em;
+  overflow: hidden;
+}
+.popover-menu .pointers .inner {
+  z-index: 201;
+}
+.popover-menu .pointers .highlight {
+  z-index: 201;
+}
+.popover-menu .pointers .north .highlight {
+  top: 2px;
+  height: 0.8em;
+}
+.popover-menu .pointers .north .inner {
+  top: 3px;
+}
+.popover-menu .pointers .north span:before {
+  content: '\25e2\25e3'; /* Makes a wide, upwards pointing triangle */
+}
+
+.popover-menu .pointers .south,
+.popover-menu .pointers .south span {
+  top: auto;
+  bottom: 0;
+}
+.popover-menu .pointers .south .inner {
+  bottom: 2px;
+}
+.popover-menu .pointers. .south span:before {
+  content: '\25e5 \25e4'; /* Makes a wide, upwards pointing triangle */
+}
+
+.popover-menu article,
+.popover-menu mark {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  bottom: 1em;
+  left: 0;
+  border-radius: 1em;
+    -moz-border-radius: 1em;
+}
+.popover-menu mark {
+  top: 1px;
+  right: 1px;
+  left: 1px;
+  display: block;
+  height: 100%;
+  border-radius: 1em;
+    -moz-border-radius: 1em;
+  background-color: transparent;
+}
+.popover-menu article {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 3em;
+  z-index: 200;
+}
+.popover-menu article,
+.popover-menu article a {
+  color: #fff;
+}
+.popover-menu.pointer-north article {
+  top: 1em;
+}
+.popover-menu.pointer-south article {
+  bottom: 1em;
+}
+.popover-menu article .popover-body {
+  position: relative;
+  margin: 0.5em;
+  z-index: 300;
+}
+
+/* ==[ THEMEING ]== */
+
+/* Background Color */
+.popover-menu article {
+  background: #222; /* Content area background */
+}
+.popover-menu .pointers .inner {
+  color: #222;
+}
+/* Bevel Color */
+.popover-menu article {
+  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.3);
+    -moz-box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.3);
+    -webkit-box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.3);
+}
+/* Border Color */
+.popover-menu article {
+  border: solid 1px #000;
+}
+.popover-menu .pointers > div {
+  color: #000;
+}
+/* Highlight color (should be slightly brighter than the Bevel Color) */
+.popover-menu mark {
+  box-shadow: 0 -1px 1px #999;
+    -moz-box-shadow: 0 -1px 1px #999;
+    -webkit-box-shadow: 0 -1px 1px #999;
+}
+.popover-menu .pointers .highlight {
+  color: #999;
+}
