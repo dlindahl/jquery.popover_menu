@@ -1,3 +1,16 @@
-=Pure CSS iPad-style Popover Menu
+= Pure CSS iPad-style Popover Menu jQuery Plug-in
 
 Tested in Firefox 3.6 and Chrome 7.0 only.
+
+= Usage
+
+$('#foo').popover_menu({
+  anchorTo : '#sort', // Positions the menu near this element. See ExtJs's alignTo for more details
+  pointer : 'north',  // Adds an upward pointing arrow. Use 'south' for a downward facing arrow.
+  show : false,       // FALSE to not display the menu upon creation
+  width : 250,        // A specific width for the menu. Leave NULL to use the width of the content element (#foo in this case)
+  height : 400,       // A specific height for the menu. Leave NULL to use the height of the content element (#foo in this case)
+  init : function() { // A callback method to run after the menu has been initialized
+    this.find('li:first-child a').addClass('selected');
+  }
+});
