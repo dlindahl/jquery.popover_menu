@@ -1,7 +1,8 @@
 ;(function( jQuery ){
 
   var tpl = [
-    "<div class=\"popover\">",
+    // The popover is built as hidden so that the width and height can be determined based on its contents
+    "<div class=\"popover\" style=\"visibility: hidden;\">",
       "<div class=\"popover-menu\">",
         "<aside class=\"pointers\">",
           "<div class=\"north\">",
@@ -145,7 +146,23 @@
          }
       }
       return [x,y];
+  },
+  _hideOnClose = function(e) {
+    var menu = $(this);
+    if(menu.is(':visible')) {
+      methods.hide.call(menu);
+    }
+  }
+  _subscribeToOutsideClicks = function(menu) {
+    // If the outside-events plugin is available, use it to close the popover
+    if(jQuery.addOutsideEvent) {
+      menu.bind('clickoutside', _hideOnClose);
+    }
+  },
+  _unsubscribeFromOutsideClicks = function(menu) {
+    menu.unbind('clickoutside', _hideOnClose);
   };
+
 
   var methods = {
     // Uses a port of ExtJS's alignTo methods
@@ -199,24 +216,27 @@
         methods.alignTo.apply( menu, options.anchorTo );
       }
 
-      if(options.show !== undefined) {
-        if(options.show === false) {
-          methods.hide.call(menu);
-        } else {
-          methods.show.apply(menu, options.show);
-        }
-      }
+      menu.hide().css('visibility','visible'); // No longer need to calculate dimensions, so hide it fo' realz
 
       if(options.init) {
         options.init.call(menu);
       }
 
+      if(options.show === false) {
+        methods.hide.call(menu);
+      } else {
+        methods.show.apply(menu, options.show);
+      }
+
       return this;
     },
     show : function() {
+       // Call _subscribeToOutsideClicks on a delay so that the outside-events plugin doesn't pick up the event that triggered the show()
+      setTimeout(function(menu) { _subscribeToOutsideClicks(menu); }, 1, this);
       return this.show.apply(this, arguments);
     },
     hide : function() {
+      _unsubscribeFromOutsideClicks(this)
       return this.hide.apply(this, arguments);
     }
   };
