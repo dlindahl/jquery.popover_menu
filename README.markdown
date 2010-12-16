@@ -1,8 +1,8 @@
-= Pure CSS iPad-style Popover Menu jQuery Plug-in
+# Pure CSS iPad-style Popover Menu jQuery Plug-in
 
 Tested in Firefox 3.6 and Chrome 7.0 only.
 
-== Usage
+## Usage
 
     $('#foo').popover_menu({
       anchorTo : '#sort', // Positions the menu near this element. See ExtJs's alignTo for more details
@@ -15,7 +15,7 @@ Tested in Firefox 3.6 and Chrome 7.0 only.
       }
     });
 
-== [jQuery Outside Events](https://github.com/cowboy/jquery-outside-events)
+## [jQuery Outside Events](https://github.com/cowboy/jquery-outside-events)
 
 In order to provide a better user experience, I added an optional dependency on [cowboy](https://github.com/cowboy)'s jQuery Outside Events plugin. If you have included that plugin in your page and a Popover Menu is visible, any click outside of the ".popover" element will automatically hide the menu.
 
